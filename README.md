@@ -1,6 +1,6 @@
 # Flutter Task
 
-## task_route
+## Task Route
 1- implement the following screen that shows a list of products
 in a recycler view using the following api
 (https://dummyjson.com/products)
