@@ -1,3 +1,3 @@
 class EndPoints {
-  static const String productList = "/products";
+  static const String products = "/products";
 }

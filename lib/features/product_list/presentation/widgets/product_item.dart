@@ -15,7 +15,7 @@ class ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          left: index.isEven ? 16.w : 0, right: index.isOdd ? 16.w : 0),
+          left: index.isEven ? 8.w : 0, right: index.isOdd ? 8.w : 0, top: 8.h),
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.r),
@@ -24,19 +24,19 @@ class ProductItem extends StatelessWidget {
           children: [
             Expanded(
               child: Stack(
-                // alignment: Alignment.centerRight,
                 children: [
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.r),
                     ),
                     child: CachedNetworkImage(
-                        imageUrl: product.thumbnail ?? "",
-                        fit: BoxFit.fill,
-                        width: double.infinity,
-                        height: 191.h,
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error_outline, size: 40)),
+                      imageUrl: product.thumbnail ?? "",
+                      fit: BoxFit.contain,
+                      width: double.infinity,
+                      height: 150.h,
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error_outline, size: 30),
+                    ),
                   ),
                   Padding(
                     padding:
@@ -44,17 +44,12 @@ class ProductItem extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.topRight,
                       child: Container(
-                        // margin: const EdgeInsets.only(left: 20),
                         padding: EdgeInsets.all(2.h.w),
-
-                        margin: EdgeInsets.only(left: 6.w),
-
                         decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15.r),
-                          // border:
-                          //     Border.all(width: 2.w, color: Colors.blueGrey)
-                        ),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(25.r),
+                            border:
+                                Border.all(width: 2.w, color: Colors.blueGrey)),
                         child: Icon(
                           Icons.favorite_outline,
                           color: AppColor.blueColor,
@@ -66,62 +61,86 @@ class ProductItem extends StatelessWidget {
               ),
             ),
             SizedBox(height: 8.h),
-            Expanded(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 8.w),
-                  child: Text(
-                    product.title ?? "",
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+            Flexible(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 8.w),
+                    child: Text(
+                      product.title ?? "",
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 8.w),
-                  child: Text(
-                    product.description ?? "",
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                  Padding(
+                    padding: EdgeInsets.only(left: 8.w),
+                    child: Text(
+                      product.description ?? "",
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
-                SizedBox(height: 8.h),
-                Row(
-                  children: [
-                    SizedBox(width: 8.w),
-                    Text("Egp ${product.price.toString()}"),
-                    SizedBox(width: 16.w),
-                    const Text("EGP 1200"),
-                  ],
-                ),
-                SizedBox(height: 5.h),
-                const Spacer(),
-                Padding(
-                  padding: EdgeInsets.only(left: 8.w, bottom: 13.h, right: 8.w),
-                  child: Row(
-                    children: [
-                      const Text("Review"),
-                      SizedBox(width: 4.w),
-                      Text(product.rating.toString()),
-                      SizedBox(width: 4.w),
-                      const Icon(
-                        Icons.star,
-                        color: Colors.yellow,
-                      ),
-                      const Spacer(),
-                      Container(
+                  SizedBox(height: 5.h),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                    child: Row(
+                      children: [
+                        Text(
+                          "EGP ${(product.price! * (product.discountPercentage!)).toStringAsFixed(1)}",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: AppColor.primary,
+                              fontSize: 14.sp),
+                        ),
+                        const Spacer(),
+                        Text(
+                          "EGP ${product.price.toString()}",
+                          style: const TextStyle(
+                              decoration: TextDecoration.lineThrough),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 5.h),
+                  Padding(
+                    padding:
+                        EdgeInsets.only(left: 8.w, bottom: 13.h, right: 8.w),
+                    child: Row(
+                      children: [
+                        const Text(
+                          "Review",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(width: 4.w),
+                        Text(
+                          "(${product.rating})",
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(width: 4.w),
+                        const Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        ),
+                        const Spacer(),
+                        Container(
                           padding: EdgeInsets.all(5.w.h),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25.r),
                             color: AppColor.blueColor,
                           ),
-                          child: const Icon(Icons.add, color: Colors.white))
-                    ],
-                  ),
-                )
-              ],
-            ))
+                          child: const Icon(Icons.add, color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),

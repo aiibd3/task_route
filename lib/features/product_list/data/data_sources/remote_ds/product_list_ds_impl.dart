@@ -16,7 +16,7 @@ class ProductRemoteDSImpl implements ProductRemoteDS {
   Future<Either<Failures, ProductModel>> getProducts() async {
     try {
       Response response =
-          await apiManager.getData(endPoint: EndPoints.productList, data: null);
+          await apiManager.getData(endPoint: EndPoints.products, data: null);
       ProductModel productModel = ProductModel.fromJson(response.data);
 
       return Right(productModel);

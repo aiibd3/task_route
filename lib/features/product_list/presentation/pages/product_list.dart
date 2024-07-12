@@ -5,7 +5,6 @@ import 'package:task_route/core/utils/styles.dart';
 import 'package:task_route/features/product_list/presentation/cubit/products_page_cubit.dart';
 
 import '../../../../core/utils/app_colors.dart';
-import '../bloc/product_list_bloc.dart';
 import '../widgets/product_item.dart';
 
 class ProductListScreen extends StatefulWidget {
@@ -22,17 +21,19 @@ class _ProductListScreenState extends State<ProductListScreen> {
       create: (context) => ProductsPageCubit()..getProducts(),
       child: Scaffold(
         appBar: AppBar(
+
           elevation: 0.0,
           centerTitle: true,
           iconTheme: const IconThemeData(
             color: AppColor.primary,
             size: 24,
           ),
-          backgroundColor: Colors.transparent,
+          backgroundColor: AppColor.primary,
           title: Text(
             "Product Details",
             style: AppStyles.poppins20.copyWith(
-              color: AppColor.primary,
+              color: Colors.white,
+
             ),
           ),
           actions: [
@@ -41,15 +42,15 @@ class _ProductListScreenState extends State<ProductListScreen> {
               icon: const Icon(
                 Icons.search,
                 size: 24,
-                color: AppColor.primary,
+                color: Colors.white,
               ),
             ),
             IconButton(
               onPressed: () {},
               icon: const Icon(
-                Icons.add_shopping_cart,
+                Icons.shopping_cart_outlined,
                 size: 24,
-                color: AppColor.primary,
+                color: Colors.white,
               ),
             ),
           ],
@@ -57,7 +58,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
 
         body: BlocBuilder<ProductsPageCubit, ProductsPageState>(
           builder: (context, state) {
-            var cubit = BlocProvider.of<ProductsPageCubit>(context);
             if (state is ProductsPageInitial) {
               return const Center(child: CircularProgressIndicator());
             }
@@ -74,8 +74,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     childAspectRatio: (192 / 237),
                     crossAxisCount: 2,
-                    mainAxisSpacing: 16.h,
-                    crossAxisSpacing: 16.w),
+                    mainAxisSpacing: 5.h,
+                    crossAxisSpacing: 10.w),
                 itemBuilder: (context, index) {
                   return ProductItem(
                       product: state.productsModel.products![index],
