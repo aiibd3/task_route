@@ -1,18 +1,18 @@
 # Flutter Task
 
 ## Task Route
-1- implement the following screen that shows a list of products
+- implement the following screen that shows a list of products
 in a recycler view using the following api
 (https://dummyjson.com/products)
 
-- Keep attention to details (commits - naming convention-
+1- Keep attention to details (commits - naming convention-
 design quality )
 
-- Send the github link of the repo with updated .md file with
+2- Send the github link of the repo with updated .md file with
 screen shots from the implemented design
 
-- Preferred to use mvvm or mvi pattern with bloc or cubit-
+3- Preferred to use mvvm or mvi pattern with bloc or cubit-
 repository pattern - DI (injectable-get it)
 
-- Clean arch is a must
-- Unit testing is a plus
+4- Clean arch is a must
+5- Unit testing is a plus
