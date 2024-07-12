@@ -50,9 +50,9 @@ class ProductItem extends StatelessWidget {
                             borderRadius: BorderRadius.circular(25.r),
                             border:
                                 Border.all(width: 2.w, color: Colors.blueGrey)),
-                        child: Icon(
+                        child: const Icon(
                           Icons.favorite_outline,
-                          color: AppColor.blueColor,
+                          color: AppColor.primary,
                         ),
                       ),
                     ),
@@ -131,7 +131,7 @@ class ProductItem extends StatelessWidget {
                           padding: EdgeInsets.all(5.w.h),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25.r),
-                            color: AppColor.blueColor,
+                            color: AppColor.primary,
                           ),
                           child: const Icon(Icons.add, color: Colors.white),
                         ),
