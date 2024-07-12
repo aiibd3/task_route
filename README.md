@@ -3,7 +3,7 @@
 ## task_route
 1- implement the following screen that shows a list of products
 in a recycler view using the following api
-- (https://dummyjson.com/products)
+(https://dummyjson.com/products)
 
 - Keep attention to details (commits - naming convention-
 design quality )
