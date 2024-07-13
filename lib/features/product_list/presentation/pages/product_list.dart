@@ -15,13 +15,15 @@ class ProductListScreen extends StatefulWidget {
 }
 
 class _ProductListScreenState extends State<ProductListScreen> {
+  bool _isSearching = false;
+  final TextEditingController _searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ProductsPageCubit()..getProducts(),
       child: Scaffold(
         appBar: AppBar(
-
           elevation: 0.0,
           centerTitle: true,
           iconTheme: const IconThemeData(
@@ -29,22 +31,53 @@ class _ProductListScreenState extends State<ProductListScreen> {
             size: 24,
           ),
           backgroundColor: AppColor.primary,
-          title: Text(
+          title: _isSearching
+              ? TextField(
+            controller: _searchController,
+            style: const TextStyle(color: Colors.white),
+            decoration: const InputDecoration(
+              hintText: 'Search...',
+              hintStyle: TextStyle(color: Colors.white54),
+              border: InputBorder.none,
+            ),
+            onChanged: (query) {
+              // Implement your search logic here
+            },
+          )
+              : Text(
             "Product Details",
             style: AppStyles.poppins20.copyWith(
               color: Colors.white,
-
             ),
           ),
           actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.search,
-                size: 24,
-                color: Colors.white,
+            if (!_isSearching)
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    _isSearching = true;
+                  });
+                },
+                icon: const Icon(
+                  Icons.search,
+                  size: 24,
+                  color: Colors.white,
+                ),
               ),
-            ),
+            if (_isSearching)
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    _isSearching = false;
+                    _searchController.clear();
+                  });
+                },
+                icon: const Icon(
+                  Icons.close,
+                  size: 24,
+                  color: Colors.white,
+                ),
+              ),
             IconButton(
               onPressed: () {},
               icon: const Icon(
@@ -55,7 +88,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
             ),
           ],
         ),
-
         body: BlocBuilder<ProductsPageCubit, ProductsPageState>(
           builder: (context, state) {
             if (state is ProductsPageInitial) {

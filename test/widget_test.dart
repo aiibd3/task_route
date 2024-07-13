@@ -6,11 +6,13 @@ import 'package:task_route/features/product_list/presentation/widgets/product_it
 
 
 // Todo: ProductItem displays product information correctly:
-// Ensures that the widget correctly displays the product's title, description, image, prices, and rating.
+// Ensures that the widget correctly displays the product's
+// title, description, image, prices, and rating.
 
 
 // Todo: Tapping the favorite icon changes its color:
-//  Checks that the favorite icon can be found and that tapping it does not cause any errors.
+//  Checks that the favorite icon can be found and that tapping
+//  it does not cause any errors.
 
 
 void main() {
