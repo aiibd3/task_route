@@ -13,8 +13,7 @@ class ProductRemoteDSImpl implements ProductRemoteDS {
   @override
   Future<Either<Failures, ProductModel>> getProducts() async {
     try {
-      Response response =
-          await apiManager.getProduct();
+      Response response = await apiManager.getProduct();
       ProductModel productModel = ProductModel.fromJson(response.data);
 
       return Right(productModel);
