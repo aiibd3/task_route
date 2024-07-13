@@ -46,10 +46,19 @@ class ProductItem extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.all(2.h.w),
                         decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(25.r),
-                            border:
-                                Border.all(width: 2.w, color: Colors.blueGrey)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset: const Offset(0, 3),
+                            )
+                          ],
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(25.r),
+                          // border:
+                          //     Border.all(width: 2.w, color: Colors.blueGrey),
+                        ),
                         child: const Icon(
                           Icons.favorite_outline,
                           color: AppColor.primary,
@@ -62,36 +71,34 @@ class ProductItem extends StatelessWidget {
             ),
             SizedBox(height: 8.h),
             Flexible(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 8.w),
-                    child: Text(
+              child: Padding(
+                padding: EdgeInsets.only(left: 8.w, bottom: 8.h, right: 8.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
                       product.title ?? "",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: AppColor.primary,
+                          fontSize: 14.sp),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 8.w),
-                    child: Text(
+                    Text(
                       product.description ?? "",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: AppColor.primary,
+                          fontSize: 14.sp),
                     ),
-                  ),
-                  SizedBox(height: 5.h),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                    child: Row(
+                    SizedBox(height: 5.h),
+                    Row(
                       children: [
                         Text(
-                          "EGP ${(product.price! * (product.discountPercentage!)).toStringAsFixed(1)}",
+                          "EGP ${product.price.toString()}",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: AppColor.primary,
@@ -99,27 +106,31 @@ class ProductItem extends StatelessWidget {
                         ),
                         const Spacer(),
                         Text(
-                          "EGP ${product.price.toString()}",
+                          "EGP ${((product.price! * (1 + product.discountPercentage! / 100))).toStringAsFixed(2)}",
                           style: const TextStyle(
-                              decoration: TextDecoration.lineThrough),
+                            decoration: TextDecoration.lineThrough,
+                            color: AppColor.font,
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                  SizedBox(height: 5.h),
-                  Padding(
-                    padding:
-                        EdgeInsets.only(left: 8.w, bottom: 13.h, right: 8.w),
-                    child: Row(
+                    SizedBox(height: 5.h),
+                    Row(
                       children: [
-                        const Text(
+                        Text(
                           "Review",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: AppColor.primary,
+                              fontSize: 14.sp),
                         ),
                         SizedBox(width: 4.w),
                         Text(
                           "(${product.rating})",
-                          style: const TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: AppColor.primary,
+                              fontSize: 14.sp),
                         ),
                         SizedBox(width: 4.w),
                         const Icon(
@@ -136,9 +147,9 @@ class ProductItem extends StatelessWidget {
                           child: const Icon(Icons.add, color: Colors.white),
                         ),
                       ],
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
           ],
