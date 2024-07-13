@@ -1,16 +1,25 @@
-# task_route
+# Flutter Task
 
-A new Flutter project.
+## Task Route
+### implement the following screen that shows a list of products in a recycler view using the following api
+(https://dummyjson.com/products).
 
-## Getting Started
+1- Keep attention to details (commits - naming convention-
+design quality ).
 
-This project is a starting point for a Flutter application.
+2- Send the github link of the repo with updated .md file with
+screen shots from the implemented design.
 
-A few resources to get you started if this is your first Flutter project:
+3- Preferred to use mvvm or mvi pattern with bloc or cubit-
+repository pattern - DI (injectable-get it).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+4- Clean arch is a must.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+5- Unit testing is a plus.
+
+### UI
+- ![image](https://github.com/user-attachments/assets/4a7c544b-1604-4201-bf7b-8d9849ffd137)
+- ![image](https://github.com/user-attachments/assets/19945507-ae94-4af1-9f3e-9a7b4fe76d16)
+
+
+
