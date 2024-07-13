@@ -19,5 +19,7 @@ repository pattern - DI (injectable-get it).
 5- Unit testing is a plus.
 
 ### UI
-![image](https://github.com/user-attachments/assets/4a7c544b-1604-4201-bf7b-8d9849ffd137)
+- ![image](https://github.com/user-attachments/assets/4a7c544b-1604-4201-bf7b-8d9849ffd137)
+- ![image](https://github.com/user-attachments/assets/4b6ae1a1-18b3-4917-bc2e-a62205fa5e9b)
+
 
